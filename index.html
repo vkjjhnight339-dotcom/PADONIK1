@@ -2,1502 +2,1920 @@
 <html lang="th">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>PADONIK</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-
-    <style>
-
-        * {
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Kanit', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f5f5f5;
-            color: #222;
-        }
-
-        /* =========================
-           HEADER
-        ========================= */
-
-        .main-header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: #fff;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            padding: 15px 6%;
-
-            box-shadow:
-                0 4px 15px rgba(0, 0, 0, 0.12);
-        }
-
-        .logo {
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: #d4af37;
-
-            text-shadow:
-                0 1px 0 #b8860b,
-                0 2px 3px rgba(0, 0, 0, 0.15);
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 25px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .nav-menu a {
-            text-decoration: none;
-            color: #222;
-            font-weight: 500;
-            transition: 0.3s;
-        }
-
-        .nav-menu a:hover {
-            color: #d99a00;
-        }
-
-        /* =========================
-           HERO
-        ========================= */
-
-        .hero-image {
-            width: 100%;
-            height: auto;
-            display: block;
-
-            box-shadow:
-                0 5px 18px rgba(0, 0, 0, 0.10);
-        }
-
-        /* =========================
-           BRAND
-        ========================= */
-
-        .brand-section {
-            background: #fff;
-            padding: 70px 6%;
-
-            box-shadow:
-                0 5px 18px rgba(0, 0, 0, 0.06);
-        }
-
-        .brand-container {
-            max-width: 1100px;
-            margin: auto;
-
-            display: flex;
-            align-items: center;
-            gap: 50px;
-
-            opacity: 0;
-            transform: translateY(50px);
-
-            transition:
-                opacity 0.8s ease,
-                transform 0.8s ease;
-        }
-
-        .brand-container.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .brand-container img {
-            width: 45%;
-            max-width: 450px;
-
-            border-radius: 15px;
-
-            box-shadow:
-                0 8px 25px rgba(0, 0, 0, 0.12);
-        }
-
-        .brand-text {
-            flex: 1;
-        }
-
-        .brand-text h2 {
-            font-size: 2rem;
-            margin-top: 0;
-        }
-
-        .brand-text p {
-            line-height: 1.8;
-            color: #555;
-        }
-
-        /* =========================
-           TITLE
-        ========================= */
-
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            margin: 20px 0 35px;
-        }
-
-        /* =========================
-           PRODUCT
-        ========================= */
-
-        #product {
-            scroll-margin-top: 100px;
-
-            width: 94%;
-            max-width: 1250px;
-
-            margin: 50px auto;
-            padding: 10px 20px 40px;
-
-            background: #fff;
-
-            border-radius: 20px;
-
-            box-shadow:
-                0 8px 30px rgba(0, 0, 0, 0.12);
-        }
-
-        .product-container {
-            display: flex;
-            justify-content: center;
-            align-items: stretch;
-            flex-wrap: wrap;
-            gap: 30px;
-        }
-
-        .feature-card {
-            background: #eeeeee;
-
-            padding: 1.5rem;
-
-            border-radius: 16px;
-
-            box-shadow:
-                0 5px 20px rgba(0, 0, 0, 0.10);
-
-            width: 300px;
-
-            display: flex;
-            flex-direction: column;
-
-            opacity: 0;
-            transform: translateY(50px);
-
-            transition:
-                opacity 0.8s ease,
-                transform 0.8s ease,
-                box-shadow 0.3s;
-        }
-
-        .feature-card.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .feature-card.show:hover {
-            transform: translateY(-8px);
-
-            box-shadow:
-                0 15px 30px rgba(0, 0, 0, 0.18);
-        }
-
-        .feature-card img {
-            width: 100%;
-            height: 260px;
-
-            object-fit: cover;
-
-            border-radius: 12px;
-
-            margin-bottom: 1rem;
-
-            box-shadow:
-                0 5px 15px rgba(0, 0, 0, 0.08);
-        }
-
-        .feature-card h3 {
-            text-align: center;
-
-            font-size: 1.3rem;
-
-            margin: 5px 0 10px;
-
-            min-height: 40px;
-        }
-
-        /* =========================
-           PRODUCT DESCRIPTION
-        ========================= */
-
-        .product-description {
-            color: #555;
-
-            font-size: 0.9rem;
-
-            line-height: 1.7;
-
-            text-align: center;
-
-            margin: 0 0 15px;
-
-            min-height: 105px;
-        }
-
-        /* =========================
-           PRICE
-        ========================= */
-
-        .price {
-            text-align: center;
-
-            font-size: 1.8rem;
-
-            font-weight: 700;
-
-            color: #d99a00;
-
-            margin-top: auto;
-
-            padding-top: 15px;
-
-            box-shadow:
-                0 -2px 0 rgba(0, 0, 0, 0.08);
-        }
-
-        /* =========================
-           SIZE
-        ========================= */
-
-        .size-title {
-            text-align: center;
-
-            font-size: 1rem;
-            font-weight: 600;
-
-            margin-top: 10px;
-            margin-bottom: 8px;
-
-            color: #333;
-        }
-
-        .size-options {
-            display: flex;
-
-            justify-content: center;
-
-            gap: 8px;
-
-            flex-wrap: wrap;
-
-            margin-bottom: 5px;
-        }
-
-        .size {
-            border: none;
-
-            background: #fff;
-
-            color: #333;
-
-            padding: 5px 13px;
-
-            border-radius: 6px;
-
-            font-size: 0.9rem;
-
-            cursor: pointer;
-
-            transition: 0.25s;
-
-            font-family: 'Kanit', sans-serif;
-
-            box-shadow:
-                0 3px 8px rgba(0, 0, 0, 0.12);
-        }
-
-        .size:hover,
-        .size.selected {
-            background: #ffb703;
-            color: #fff;
-
-            box-shadow:
-                0 5px 12px rgba(255, 183, 3, 0.35);
-        }
-
-        /* =========================
-           PACKAGING
-        ========================= */
-
-        #packaging {
-            scroll-margin-top: 100px;
-
-            width: 94%;
-            max-width: 1250px;
-
-            margin: 50px auto;
-
-            padding: 40px 30px 50px;
-
-            background: #fff;
-
-            border-radius: 20px;
-
-            box-shadow:
-                0 8px 30px rgba(0, 0, 0, 0.12);
-        }
-
-        .packaging-container {
-            max-width: 1050px;
-
-            margin: auto;
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 50px;
-        }
-
-        .packaging-image {
-            flex: 1;
-        }
-
-        .packaging-image img {
-            width: 100%;
-            max-width: 500px;
-
-            height: 400px;
-
-            object-fit: cover;
-
-            display: block;
-
-            margin: auto;
-
-            border-radius: 18px;
-        }
-
-        .packaging-text {
-            flex: 1;
-        }
-
-        .packaging-text h2 {
-            font-size: 2rem;
-
-            margin-top: 0;
-
-            color: #d99a00;
-        }
-
-        .packaging-text p {
-            color: #555;
-
-            line-height: 1.8;
-
-            font-size: 1rem;
-        }
-
-        .packaging-info {
-            display: flex;
-
-            flex-direction: column;
-
-            gap: 12px;
-
-            margin-top: 20px;
-        }
-
-        .packaging-info div {
-            padding: 15px;
-
-            background: #f5f5f5;
-
-            border-radius: 12px;
-        }
-
-        .packaging-info strong {
-            display: block;
-
-            margin-bottom: 4px;
-        }
-
-        .packaging-info span {
-            color: #666;
-        }
-
-        /* =========================
-           ABOUT
-        ========================= */
-
-        #about {
-            scroll-margin-top: 100px;
-
-            width: 94%;
-            max-width: 1250px;
-
-            margin: 50px auto;
-
-            padding: 10px 20px 50px;
-
-            background: #f5f5f5;
-
-            border-radius: 20px;
-
-            box-shadow:
-                0 8px 30px rgba(0, 0, 0, 0.12);
-        }
-
-        .about-container {
-            display: flex;
-
-            justify-content: center;
-
-            flex-wrap: wrap;
-
-            gap: 25px;
-        }
-
-        /* =========================
-           MEMBER CARD
-        ========================= */
-
-        .card {
-            background: #fff;
-
-            width: 250px;
-
-            padding: 20px;
-
-            border-radius: 15px;
-
-            text-align: center;
-
-            opacity: 0;
-            transform: translateY(50px);
-
-            transition:
-                opacity 0.8s ease,
-                transform 0.8s ease,
-                box-shadow 0.3s;
-
-            box-shadow:
-                0 5px 18px rgba(0, 0, 0, 0.10);
-        }
-
-        .card.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .card.show:hover {
-            transform: translateY(-8px);
-
-            box-shadow:
-                0 15px 30px rgba(0, 0, 0, 0.18);
-        }
-
-        .card img {
-            width: 150px;
-            height: 150px;
-
-            object-fit: cover;
-            object-position: center;
-
-            border-radius: 50%;
-
-            border: 3px solid #222;
-
-            margin: 0 auto 10px;
-
-            display: block;
-
-            box-shadow:
-                0 5px 15px rgba(0, 0, 0, 0.12);
-        }
-
-        .card h3 {
-            margin: 8px 0;
-
-            font-size: 1.1rem;
-        }
-
-        .card p {
-            margin: 5px 0;
-
-            color: #555;
-        }
-
-        /* =========================
-           CONTACT
-        ========================= */
-
-        #contact {
-            scroll-margin-top: 100px;
-
-            width: 94%;
-            max-width: 1250px;
-
-            margin: 50px auto;
-
-            padding: 30px 20px 45px;
-
-            background: #fff;
-
-            border-radius: 20px;
-
-            box-shadow:
-                0 8px 30px rgba(0, 0, 0, 0.12);
-        }
-
-        .contact-container {
-            display: flex;
-
-            justify-content: center;
-
-            align-items: stretch;
-
-            flex-wrap: wrap;
-
-            gap: 20px;
-
-            max-width: 1000px;
-
-            margin: auto;
-        }
-
-        .contact-card {
-            width: 180px;
-
-            min-height: 140px;
-
-            padding: 20px;
-
-            background: #f5f5f5;
-
-            border-radius: 15px;
-
-            text-align: center;
-
-            text-decoration: none;
-
-            color: #222;
-
-            display: flex;
-
-            flex-direction: column;
-
-            justify-content: center;
-
-            align-items: center;
-
-            transition: 0.3s;
-
-            box-shadow:
-                0 5px 18px rgba(0, 0, 0, 0.10);
-        }
-
-        .contact-card:hover {
-            background: #000;
-
-            color: #fff;
-
-            transform: translateY(-7px);
-        }
-
-        .contact-icon {
-            font-size: 2rem;
-
-            margin-bottom: 8px;
-        }
-
-        .contact-card h3 {
-            margin: 5px 0;
-
-            font-size: 1.1rem;
-        }
-
-        .contact-card p {
-            margin: 0;
-
-            font-size: 0.9rem;
-
-            color: #666;
-
-            word-break: break-word;
-        }
-
-        .contact-card:hover p {
-            color: #fff;
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        .main-footer {
-            background: #000;
-
-            color: #fff;
-
-            text-align: center;
-
-            padding: 25px;
-
-            margin-top: 50px;
-        }
-
-        /* =========================
-           BACK TO TOP
-        ========================= */
-
-        #backToTop {
-            position: fixed;
-
-            right: 25px;
-            bottom: 25px;
-
-            width: 50px;
-            height: 50px;
-
-            border: none;
-
-            border-radius: 50%;
-
-            background: #000;
-
-            color: #fff;
-
-            font-size: 22px;
-
-            cursor: pointer;
-
-            display: none;
-
-            z-index: 999;
-
-            transition: 0.3s;
-        }
-
-        #backToTop:hover {
-            background: #ffb703;
-
-            transform: translateY(-5px);
-        }
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 768px) {
-
-            .main-header {
-                flex-direction: column;
-                gap: 10px;
-                padding: 12px;
-            }
-
-            .logo {
-                font-size: 1.8rem;
-            }
-
-            .nav-menu {
-                gap: 12px;
-            }
-
-            .nav-menu a {
-                font-size: 0.9rem;
-            }
-
-            .brand-container {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .brand-container img {
-                width: 100%;
-            }
-
-            .feature-card {
-                width: 100%;
-                max-width: 350px;
-            }
-
-            .card {
-                width: 100%;
-                max-width: 300px;
-            }
-
-            #product,
-            #about,
-            #contact,
-            #packaging {
-                width: 94%;
-                padding-left: 15px;
-                padding-right: 15px;
-            }
-
-            .contact-card {
-                width: 100%;
-                max-width: 300px;
-            }
-
-            .packaging-container {
-                flex-direction: column;
-                gap: 25px;
-                text-align: center;
-            }
-
-            .packaging-image {
-                width: 100%;
-            }
-
-            .packaging-image img {
-                width: 100%;
-                height: auto;
-                max-height: 400px;
-            }
-
-            .product-description {
-                min-height: auto;
-            }
-
-        }
-
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description"
+content="ขนมจีบ — คำเล็ก ๆ ที่ความอร่อยไม่เล็ก ขนมจีบทำสด ไส้แน่น แป้งบาง">
+
+<title>ขนมจีบ | คำเล็ก ๆ ที่ความอร่อยไม่เล็ก</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Noto+Serif+Thai:wght@500;600;700&display=swap"
+rel="stylesheet">
+
+<style>
+
+:root{
+  --cream:#f8f0df;
+  --cream2:#fffaf0;
+  --red:#a9251d;
+  --red2:#7f1813;
+  --brown:#321d16;
+  --gold:#d8a43a;
+  --muted:#78665c;
+  --white:#fff;
+  --shadow:0 16px 45px rgba(53,28,18,.13);
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:"Kanit",sans-serif;
+  color:var(--brown);
+  background:var(--cream2);
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+img{
+  max-width:100%;
+  display:block;
+}
+
+.container{
+  width:min(1180px,92%);
+  margin:auto;
+}
+
+
+/* ================= BUTTON ================= */
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  padding:13px 24px;
+  border-radius:999px;
+  font-weight:600;
+  transition:.25s;
+  border:0;
+  cursor:pointer;
+}
+
+.btn-primary{
+  background:var(--red);
+  color:#fff;
+  box-shadow:0 10px 25px rgba(169,37,29,.25);
+}
+
+.btn-primary:hover{
+  transform:translateY(-2px);
+  background:var(--red2);
+}
+
+.btn-light{
+  background:#fff;
+  color:var(--red);
+  border:1px solid rgba(169,37,29,.18);
+}
+
+.btn-light:hover{
+  transform:translateY(-2px);
+}
+
+
+/* ================= SECTION ================= */
+
+.section{
+  padding:90px 0;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:45px;
+}
+
+.eyebrow{
+  color:var(--gold);
+  font-size:.85rem;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  font-weight:600;
+}
+
+.section-title h2{
+  font-family:"Noto Serif Thai",serif;
+  font-size:clamp(2rem,4vw,3rem);
+  line-height:1.25;
+  margin:8px 0;
+}
+
+.section-title p{
+  color:var(--muted);
+  max-width:650px;
+  margin:auto;
+}
+
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(255,250,240,.94);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(80,35,20,.08);
+}
+
+.nav-inner{
+  height:74px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:25px;
+}
+
+
+/* ================= LOGO ================= */
+
+/* วงกลมโลโก้ */
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-family:"Noto Serif Thai",serif;
+  font-weight:700;
+  font-size:1.45rem;
+}
+
+.logo-mark{
+  width:44px;
+  height:44px;
+  min-width:44px;
+  border-radius:50%;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  padding:0;
+  border:0;
+}
+
+/* ทำให้รูปโลโก้เต็มวงกลม */
+.logo-mark img{
+  width:130%;
+  height:130%;
+  max-width:none;
+  max-height:none;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+}
+
+.logo small{
+  display:block;
+  font-family:Kanit;
+  font-size:.55rem;
+  font-weight:400;
+  color:var(--muted);
+  line-height:1;
+}
+
+.nav-links{
+  display:flex;
+  gap:23px;
+  font-size:.92rem;
+}
+
+.nav-links a{
+  position:relative;
+}
+
+.nav-links a:hover{
+  color:var(--red);
+}
+
+.menu-btn{
+  display:none;
+  border:0;
+  background:none;
+  font-size:27px;
+  color:var(--brown);
+  cursor:pointer;
+}
+
+
+/* ================= HERO ================= */
+
+.hero{
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(
+    105deg,
+    #fff7e9 0%,
+    #f8e9d0 48%,
+    #ead3ae 100%
+  );
+}
+
+.hero:before{
+  content:"";
+  position:absolute;
+  width:500px;
+  height:500px;
+  border-radius:50%;
+  background:rgba(216,164,58,.12);
+  right:-180px;
+  top:-180px;
+}
+
+.hero-grid{
+  min-height:650px;
+  display:grid;
+  grid-template-columns:1fr 1.05fr;
+  align-items:center;
+  gap:30px;
+  padding:55px 0;
+}
+
+.hero-copy{
+  position:relative;
+  z-index:2;
+}
+
+.hero-copy .mini{
+  color:var(--red);
+  font-weight:600;
+  letter-spacing:2px;
+}
+
+.hero h1{
+  font-family:"Noto Serif Thai",serif;
+  font-size:clamp(4rem,8vw,7rem);
+  line-height:.95;
+  margin:12px 0;
+  color:#4a251b;
+}
+
+.hero h1 span{
+  color:var(--red);
+}
+
+.hero-tag{
+  font-size:1.35rem;
+  font-weight:500;
+  margin-bottom:12px;
+}
+
+.hero-desc{
+  color:var(--muted);
+  max-width:480px;
+  margin-bottom:25px;
+}
+
+.hero-actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.hero-photo{
+  position:relative;
+}
+
+.hero-photo img{
+  width:100%;
+  border-radius:36px;
+  box-shadow:var(--shadow);
+  object-fit:cover;
+}
+
+.badge{
+  position:absolute;
+  left:-18px;
+  bottom:25px;
+  background:#fff;
+  border-radius:18px;
+  padding:14px 18px;
+  box-shadow:var(--shadow);
+  font-weight:600;
+}
+
+.badge b{
+  color:var(--red);
+  display:block;
+  font-size:1.15rem;
+}
+
+
+/* ================= FEATURES ================= */
+
+.features{
+  background:#fffaf1;
+  border-top:1px solid #eadbc2;
+  border-bottom:1px solid #eadbc2;
+}
+
+.feature-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+}
+
+.feature{
+  padding:30px 20px;
+  text-align:center;
+  border-right:1px solid #e5d3b6;
+}
+
+.feature:last-child{
+  border:0;
+}
+
+.feature-icon{
+  font-size:2rem;
+  margin-bottom:6px;
+}
+
+.feature h3{
+  font-size:1.05rem;
+}
+
+.feature p{
+  font-size:.85rem;
+  color:var(--muted);
+}
+
+
+/* ================= MENU ================= */
+
+.menu-section{
+  background:var(--red);
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+}
+
+.menu-section:before{
+  content:"囍  囍  囍  囍  囍";
+  position:absolute;
+  inset:20px 0 auto;
+  text-align:center;
+  color:rgba(255,255,255,.06);
+  font-size:7rem;
+  letter-spacing:25px;
+}
+
+.menu-section .section-title{
+  position:relative;
+}
+
+.menu-section .section-title p{
+  color:#f5d9c8;
+}
+
+.menu-section .eyebrow{
+  color:#f5ca68;
+}
+
+.menu-grid{
+  position:relative;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:25px;
+  max-width:900px;
+  margin:auto;
+}
+
+.card{
+  background:#fffaf0;
+  color:var(--brown);
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 12px 30px rgba(45,10,5,.18);
+  transition:.25s;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+}
+
+.card img{
+  width:100%;
+  aspect-ratio:1.25;
+  object-fit:cover;
+}
+
+.card-body{
+  padding:22px;
+}
+
+.card h3{
+  font-size:1.3rem;
+  margin-bottom:6px;
+}
+
+.card p{
+  font-size:.95rem;
+  color:var(--muted);
+  min-height:50px;
+}
+
+.price{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:15px;
+  color:var(--red);
+  font-weight:700;
+}
+
+.price span{
+  font-size:1.2rem;
+}
+
+
+/* ================= STORY ================= */
+
+.story{
+  background:#fffaf0;
+}
+
+.story-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+
+.story-img img{
+  border-radius:28px;
+  box-shadow:var(--shadow);
+}
+
+.story-copy h2{
+  font-family:"Noto Serif Thai",serif;
+  font-size:clamp(2rem,4vw,3.2rem);
+  line-height:1.25;
+  margin:10px 0 18px;
+}
+
+.story-copy p{
+  color:var(--muted);
+  margin-bottom:18px;
+}
+
+.quote{
+  border-left:4px solid var(--gold);
+  padding-left:18px;
+  color:var(--red);
+  font-family:"Noto Serif Thai",serif;
+  font-size:1.2rem;
+}
+
+
+/* ================= WHY ================= */
+
+.why{
+  background:#261813;
+  color:#fff;
+}
+
+.why-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:25px;
+}
+
+.why-card{
+  text-align:center;
+  padding:25px 15px;
+}
+
+.why-icon{
+  width:64px;
+  height:64px;
+  border:1px solid #d9aa48;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  margin:0 auto 15px;
+  font-size:1.6rem;
+}
+
+.why-card h3{
+  font-size:1.05rem;
+}
+
+.why-card p{
+  color:#cdbbb2;
+  font-size:.85rem;
+}
+
+
+/* ================= PACKAGING ================= */
+
+.packaging{
+  background:#fffaf0;
+}
+
+.packaging-grid{
+  display:grid;
+  grid-template-columns:1.1fr 1fr;
+  gap:55px;
+  align-items:center;
+}
+
+.packaging-image{
+  background:#f3e4cc;
+  border-radius:28px;
+  padding:15px;
+  box-shadow:var(--shadow);
+}
+
+.packaging-image img{
+  width:100%;
+  aspect-ratio:4/3;
+  object-fit:cover;
+  border-radius:20px;
+}
+
+.packaging-copy h2{
+  font-family:"Noto Serif Thai",serif;
+  font-size:clamp(2rem,4vw,3rem);
+  line-height:1.25;
+  margin:8px 0 18px;
+}
+
+.packaging-copy p{
+  color:var(--muted);
+  margin-bottom:20px;
+}
+
+.packaging-list{
+  list-style:none;
+  display:grid;
+  gap:12px;
+}
+
+.packaging-list li{
+  background:#fff;
+  border:1px solid #eadbc2;
+  border-radius:14px;
+  padding:12px 15px;
+}
+
+.packaging-list li::before{
+  content:"✓";
+  color:var(--red);
+  font-weight:700;
+  margin-right:10px;
+}
+
+
+/* ================= MEMBERS ================= */
+
+.members{
+  background:#f8f0df;
+}
+
+.member-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:25px;
+}
+
+.member-card{
+  background:#fffaf0;
+  border-radius:22px;
+  padding:15px;
+  text-align:center;
+  box-shadow:0 10px 30px rgba(53,28,18,.10);
+  transition:.3s;
+  border:1px solid #eadbc2;
+}
+
+.member-card:hover{
+  transform:translateY(-7px);
+  box-shadow:var(--shadow);
+}
+
+.member-photo{
+  width:100%;
+  aspect-ratio:1;
+  border-radius:18px;
+  object-fit:cover;
+  background:#eadbc2;
+}
+
+.member-info{
+  padding:16px 8px 8px;
+}
+
+.member-info h3{
+  color:var(--red);
+  font-size:1.15rem;
+  margin-bottom:3px;
+}
+
+.member-info p{
+  color:var(--muted);
+  font-size:.9rem;
+}
+
+
+/* ================= CONTACT ================= */
+
+.contact{
+  background:#fffaf0;
+}
+
+.contact-box{
+  margin-top:35px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.contact-item{
+  background:#fff;
+  border:1px solid #eadbc2;
+  border-radius:18px;
+  padding:20px;
+  text-align:center;
+  transition:.25s;
+}
+
+.contact-item:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow);
+}
+
+.contact-icon{
+  font-size:2rem;
+  margin-bottom:7px;
+}
+
+.contact-item h3{
+  color:var(--red);
+  font-size:1.05rem;
+  margin-bottom:4px;
+}
+
+.contact-item p{
+  color:var(--muted);
+  font-size:.9rem;
+}
+
+.contact-item a{
+  color:var(--red);
+  font-weight:600;
+}
+
+
+/* ================= FINAL ================= */
+
+.final-cta{
+  background:linear-gradient(90deg,#9d211a,#c53829);
+  color:#fff;
+  text-align:center;
+  padding:70px 0;
+  position:relative;
+  overflow:hidden;
+}
+
+.final-cta h2{
+  font-family:"Noto Serif Thai",serif;
+  font-size:clamp(2rem,5vw,3.6rem);
+  line-height:1.2;
+}
+
+.final-cta p{
+  color:#f8d8cf;
+  margin:10px 0 24px;
+}
+
+
+/* ================= FOOTER ================= */
+
+footer{
+  background:#1d110e;
+  color:#fff;
+  padding:55px 0 25px;
+}
+
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr 1fr;
+  gap:35px;
+}
+
+.footer-logo{
+  font-family:"Noto Serif Thai",serif;
+  font-size:1.8rem;
+  margin-bottom:8px;
+}
+
+.footer p,
+.footer a{
+  color:#bca9a1;
+  font-size:.9rem;
+}
+
+.footer h4{
+  margin-bottom:10px;
+  color:#fff;
+}
+
+.social{
+  display:flex;
+  gap:8px;
+  margin-top:15px;
+}
+
+.social a{
+  width:38px;
+  height:38px;
+  border:1px solid #60483e;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+}
+
+.copyright{
+  border-top:1px solid #3d2923;
+  margin-top:35px;
+  padding-top:18px;
+  text-align:center;
+  color:#8f7970;
+  font-size:.8rem;
+}
+
+
+/* ================= TABLET ================= */
+
+@media(max-width:900px){
+
+  .nav-links{
+    display:none;
+  }
+
+  .menu-btn{
+    display:block;
+  }
+
+  .nav-links.open{
+    display:flex;
+    position:absolute;
+    left:0;
+    right:0;
+    top:74px;
+    background:#fffaf0;
+    flex-direction:column;
+    padding:20px 5%;
+    border-bottom:1px solid #eadbc2;
+    box-shadow:0 10px 20px rgba(0,0,0,.08);
+  }
+
+  .nav-links a{
+    padding:8px 0;
+  }
+
+  .hero-grid{
+    grid-template-columns:1fr;
+    padding:45px 0;
+  }
+
+  .hero-copy{
+    text-align:center;
+  }
+
+  .hero-desc{
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .hero-actions{
+    justify-content:center;
+  }
+
+  .hero-photo{
+    max-width:650px;
+    margin:auto;
+  }
+
+  .feature-grid,
+  .why-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .story-grid,
+  .packaging-grid{
+    grid-template-columns:1fr;
+    gap:30px;
+  }
+
+  .story-copy,
+  .packaging-copy{
+    text-align:center;
+  }
+
+  .quote{
+    display:inline-block;
+    text-align:left;
+  }
+
+  .packaging-list{
+    text-align:left;
+  }
+
+  .member-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .contact-box{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .footer-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:560px){
+
+  .container{
+    width:90%;
+  }
+
+  .section{
+    padding:60px 0;
+  }
+
+  .nav-inner{
+    height:66px;
+  }
+
+  .nav-links.open{
+    top:66px;
+  }
+
+  .logo{
+    font-size:1.15rem;
+  }
+
+  .logo small{
+    font-size:.5rem;
+  }
+
+  /* โลโก้บนมือถือ */
+  .logo-mark{
+    width:38px;
+    height:38px;
+    min-width:38px;
+    padding:0;
+  }
+
+  .logo-mark img{
+    width:130%;
+    height:130%;
+    object-fit:cover;
+    object-position:center;
+  }
+
+  .menu-btn{
+    font-size:25px;
+  }
+
+  .hero-grid{
+    min-height:auto;
+    padding:45px 0 55px;
+  }
+
+  .hero h1{
+    font-size:4rem;
+  }
+
+  .hero-copy .mini{
+    font-size:.72rem;
+    letter-spacing:1px;
+  }
+
+  .hero-tag{
+    font-size:1.05rem;
+  }
+
+  .hero-desc{
+    font-size:.9rem;
+  }
+
+  .hero-actions{
+    flex-direction:column;
+    width:100%;
+  }
+
+  .hero-actions .btn{
+    width:100%;
+  }
+
+  .hero-photo img{
+    border-radius:22px;
+  }
+
+  .badge{
+    left:10px;
+    bottom:10px;
+    padding:10px 14px;
+    font-size:.85rem;
+  }
+
+  .badge b{
+    font-size:1rem;
+  }
+
+  .feature-grid,
+  .menu-grid,
+  .why-grid,
+  .member-grid,
+  .contact-box,
+  .footer-grid{
+    grid-template-columns:1fr;
+  }
+
+  .feature{
+    border-right:0;
+    border-bottom:1px solid #e5d3b6;
+    padding:24px 15px;
+  }
+
+  .feature:last-child{
+    border-bottom:0;
+  }
+
+  .menu-grid{
+    gap:20px;
+  }
+
+  .card{
+    border-radius:16px;
+  }
+
+  .card-body{
+    padding:18px;
+  }
+
+  .card h3{
+    font-size:1.15rem;
+  }
+
+  .card p{
+    font-size:.88rem;
+    min-height:auto;
+  }
+
+  .price span{
+    font-size:1.05rem;
+  }
+
+  .story-copy h2,
+  .packaging-copy h2{
+    font-size:2rem;
+  }
+
+  .story-copy p,
+  .packaging-copy p{
+    font-size:.9rem;
+  }
+
+  .quote{
+    font-size:1rem;
+  }
+
+  .packaging-image{
+    padding:10px;
+    border-radius:20px;
+  }
+
+  .packaging-image img{
+    border-radius:15px;
+  }
+
+  .member-card{
+    max-width:360px;
+    width:100%;
+    margin:auto;
+  }
+
+  .final-cta{
+    padding:55px 15px;
+  }
+
+  .final-cta h2{
+    font-size:2rem;
+  }
+
+  .final-cta p{
+    font-size:.9rem;
+  }
+
+  footer{
+    padding:45px 0 20px;
+  }
+
+  .footer-logo{
+    font-size:1.5rem;
+  }
+
+}
+
+
+/* ================= SMALL MOBILE ================= */
+
+@media(max-width:380px){
+
+  .hero h1{
+    font-size:3.4rem;
+  }
+
+  .hero-tag{
+    font-size:1rem;
+  }
+
+  .section-title h2{
+    font-size:1.8rem;
+  }
+
+  .btn{
+    padding:11px 18px;
+    font-size:.9rem;
+  }
+
+}
+
+</style>
 </head>
+
 
 <body>
 
-    <!-- =========================
-         HEADER
-    ========================= -->
 
-    <header class="main-header">
+<!-- ================= NAVBAR ================= -->
 
-        <div class="logo">
-            PADONIK
-        </div>
+<header class="navbar">
 
-        <nav class="nav-menu">
+  <div class="container nav-inner">
 
-            <a href="#home">
-                หน้าแรก
-            </a>
+    <a class="logo" href="#home">
 
-            <a href="#about">
-                เกี่ยวกับเรา
-            </a>
-
-            <a href="#product">
-                สินค้า
-            </a>
-
-            <a href="#packaging">
-                แพ็กเกจจิ้ง
-            </a>
-
-            <a href="#contact">
-                ติดต่อ
-            </a>
-
-        </nav>
-
-    </header>
-
-
-    <main id="home">
-
+      <span class="logo-mark">
         <img
-            src="img/ppp.PNG"
-            alt="PADONIK"
-            class="hero-image"
-        >
+          src="50.PNG"
+          alt="ขนมจีบไส้กุ้ง">
+      </span>
 
+      <span>
+        ขนมจีบ
+        <small>คำเล็ก ๆ ที่ความอร่อยไม่เล็ก</small>
+      </span>
 
-        <!-- =========================
-             BRAND
-        ========================= -->
+    </a>
 
-        <section class="brand-section">
 
-            <div class="brand-container">
+    <nav class="nav-links" id="nav">
 
-                <img
-                    src="img/logo55.JPEG"
-                    alt="PADONIK Logo"
-                >
+      <a href="#home">หน้าแรก</a>
 
-                <div class="brand-text">
+      <a href="#menu">เมนูทั้งหมด</a>
 
-                    <h2>
-                        เกี่ยวกับแบรนด์ PADONIK
-                    </h2>
+      <a href="#story">เรื่องราวแบรนด์</a>
 
-                    <p>
-                        PADONIK คือแบรนด์เสื้อผ้าที่ออกแบบมา
-                        สำหรับคนที่ชื่นชอบสไตล์เรียบ เท่
-                        และสามารถสวมใส่ได้ในชีวิตประจำวัน
-                    </p>
+      <a href="#why">ทำไมต้องขนมจีบ</a>
 
-                    <p>
-                        เราให้ความสำคัญกับการออกแบบ
-                        คุณภาพ และความแตกต่าง
-                        เพื่อให้ทุกคนสามารถแสดงตัวตน
-                        ผ่านเสื้อผ้าของ PADONIK
-                    </p>
+      <a href="#packaging">แพ็กเกจจิ้ง</a>
 
-                </div>
+      <a href="#members">สมาชิกกลุ่ม</a>
 
-            </div>
+      <a href="#contact">ติดต่อเรา</a>
 
-        </section>
+    </nav>
 
-
-        <!-- =========================
-             PRODUCT
-        ========================= -->
-
-        <section id="product">
-
-            <h2 class="section-title">
-                สินค้า
-            </h2>
-
-            <div class="product-container">
-
-
-                <!-- BLACK -->
-
-                <div class="feature-card">
-
-                    <img
-                        src="img/TTT.JPG"
-                        alt="SHIRTS POLO BLACK"
-                    >
-
-                    <h3>
-                        SHIRTS POLO BLACK
-                    </h3>
-
-                    <p class="product-description">
-                        เสื้อโปโลสีดำ PADONIK
-                        ดีไซน์เรียบเท่ เหมาะสำหรับการสวมใส่
-                        ในชีวิตประจำวัน และสามารถนำไปแต่งตัว
-                        ได้หลากหลายสไตล์
-                    </p>
-
-                    <div class="price">
-                        ฿399
-                    </div>
-
-                    <div class="size-title">
-                        ไซซ์ที่มี
-                    </div>
-
-                    <div class="size-options">
-
-                        <button class="size">S</button>
-                        <button class="size">M</button>
-                        <button class="size">L</button>
-                        <button class="size">XL</button>
-
-                    </div>
-
-                </div>
-
-
-                <!-- WHITE -->
-
-                <div class="feature-card">
-
-                    <img
-                        src="img/tt.PNG"
-                        alt="SHIRTS POLO WHITE"
-                    >
-
-                    <h3>
-                        SHIRTS POLO WHITE
-                    </h3>
-
-                    <p class="product-description">
-                        เสื้อโปโลสีขาว PADONIK
-                        ดีไซน์สะอาดและทันสมัย เหมาะสำหรับ
-                        การแต่งตัวในชีวิตประจำวัน
-                        และสามารถเข้ากับเสื้อผ้าได้หลายสไตล์
-                    </p>
-
-                    <div class="price">
-                        ฿399
-                    </div>
-
-                    <div class="size-title">
-                        ไซซ์ที่มี
-                    </div>
-
-                    <div class="size-options">
-
-                        <button class="size">S</button>
-                        <button class="size">M</button>
-                        <button class="size">L</button>
-                        <button class="size">XL</button>
-
-                    </div>
-
-                </div>
-
-
-                <!-- GREY -->
-
-                <div class="feature-card">
-
-                    <img
-                        src="img/t.PNG"
-                        alt="SHIRTS POLO GREY"
-                    >
-
-                    <h3>
-                        SHIRTS POLO GREY
-                    </h3>
-
-                    <p class="product-description">
-                        เสื้อโปโลสีเทา PADONIK
-                        โทนสีเรียบเท่ สวมใส่ได้ง่าย
-                        เหมาะสำหรับหลายโอกาส
-                        และเข้ากับการแต่งตัวได้หลากหลาย
-                    </p>
-
-                    <div class="price">
-                        ฿399
-                    </div>
-
-                    <div class="size-title">
-                        ไซซ์ที่มี
-                    </div>
-
-                    <div class="size-options">
-
-                        <button class="size">S</button>
-                        <button class="size">M</button>
-                        <button class="size">L</button>
-                        <button class="size">XL</button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             PACKAGING
-        ========================= -->
-
-        <section id="packaging">
-
-            <h2 class="section-title">
-                
-            </h2>
-
-            <div class="packaging-container">
-
-                <div class="packaging-image">
-
-                    <img
-                        src="img/pac.jpeg"
-                        alt="แพ็กเกจจิ้ง PADONIK"
-                    >
-
-                </div>
-
-                <div class="packaging-text">
-
-                    <h2>
-                        PADONIK PACKAGING
-                    </h2>
-
-                    <p>
-                        ทุกคำสั่งซื้อจาก PADONIK
-                        ถูกจัดเตรียมและบรรจุอย่างใส่ใจ
-                        เพื่อให้สินค้าอยู่ในสภาพเรียบร้อย
-                        ก่อนส่งถึงมือลูกค้า
-                    </p>
-
-                    <div class="packaging-info">
-
-                        <div>
-
-                            <strong>
-                                บรรจุภัณฑ์
-                            </strong>
-
-                            <span>
-                                แพ็กเกจจิ้ง PADONIK
-                            </span>
-
-                        </div>
-
-
-                        <div>
-
-                            <strong>
-                                สินค้า
-                            </strong>
-
-                            <span>
-                                SHIRTS POLO
-                            </span>
-
-                        </div>
-
-
-                        <div>
-
-                            <strong>
-                                การจัดเตรียม
-                            </strong>
-
-                            <span>
-                                ตรวจสอบสินค้าและแพ็กก่อนจัดส่ง
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             ABOUT
-        ========================= -->
-
-        <section id="about">
-
-            <h2 class="section-title">
-                สมาชิกกลุ่ม
-            </h2>
-
-            <div class="about-container">
-
-
-                <!-- สมาชิกคนที่ 1 -->
-
-                <div class="card">
-
-                    <img
-                        src="img/1night.JPEG"
-                        alt="นาย ทัตพงศ์ มูลศักดิ์"
-                    >
-
-                    <h3>
-                        นาย ทัตพงศ์ มูลศักดิ์
-                    </h3>
-
-                    <p>
-                        เลขที่ 13 ม.6/4
-                    </p>
-
-                </div>
-
-
-                <!-- สมาชิกคนที่ 2 -->
-
-                <div class="card">
-
-                    <img
-                        src="img/ano.JPEG"
-                        alt="นาย อโนทัย น้ำทอง"
-                    >
-
-                    <h3>
-                        นาย อโนทัย น้ำทอง
-                    </h3>
-
-                    <p>
-                        เลขที่ 6 ม.6/4
-                    </p>
-
-                </div>
-
-
-                <!-- สมาชิกคนที่ 3 -->
-
-                <div class="card">
-
-                    <img
-                        src="img/IMG_6586.JPEG"
-                        alt="นาย ศุภสิทธิ์ ปุริเส"
-                    >
-
-                    <h3>
-                        นาย ศุภสิทธิ์ ปุริเส
-                    </h3>
-
-                    <p>
-                        เลขที่ 5 ม.6/4
-                    </p>
-
-                </div>
-
-
-                <!-- สมาชิกคนที่ 4 -->
-
-                <div class="card">
-
-                    <img
-                        src="img/3pond.JPEG"
-                        alt="นาย วีรพัฒน์ ระมั้งทอง"
-                    >
-
-                    <h3>
-                        นาย วีรพัฒน์ ระมั้งทอง
-                    </h3>
-
-                    <p>
-                        เลขที่ 4 ม.6/4
-                    </p>
-
-                </div>
-
-
-                <!-- สมาชิกคนที่ 5 -->
-
-                <div class="card">
-
-                    <img
-                        src="img/22.JPG"
-                        alt="นายธีรภัทร แก้มมณี"
-                    >
-
-                    <h3>
-                        นายธีรภัทร แก้มมณี
-                    </h3>
-
-                    <p>
-                        เลขที่ 15 ม.6/4
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             CONTACT
-        ========================= -->
-
-        <section id="contact">
-
-            <h2 class="section-title">
-                ช่องทางการติดต่อ
-            </h2>
-
-            <div class="contact-container">
-
-
-                <!-- FACEBOOK -->
-
-                <a
-                    href="https://www.facebook.com/share/1DPBNoZpzU/?mibextid=wwXIfr"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="contact-card"
-                >
-
-                    <div class="contact-icon">
-                        f
-                    </div>
-
-                    <h3>
-                        Facebook
-                    </h3>
-
-                    <p>
-                        TATPONG MOONSAK
-                    </p>
-
-                </a>
-
-
-                <!-- INSTAGRAM -->
-
-                <a
-                    href="https://www.instagram.com/tatpong_.3?stkn=eGF5NmN2ZjV4Z3By&utm_source=qr"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="contact-card"
-                >
-
-                    <div class="contact-icon">
-                        ◎
-                    </div>
-
-                    <h3>
-                        Instagram
-                    </h3>
-
-                    <p>
-                        @tatpong_.3
-                    </p>
-
-                </a>
-
-
-                <!-- LINE -->
-
-                <a
-                    href="https://line.me/ti/p/GvmdjyKgZp"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="contact-card"
-                >
-
-                    <div class="contact-icon">
-                        LINE
-                    </div>
-
-                    <h3>
-                        LINE
-                    </h3>
-
-                    <p>
-                        ติดต่อผ่าน LINE
-                    </p>
-
-                </a>
-
-
-                <!-- PHONE -->
-
-                <a
-                    href="tel:0979790035"
-                    class="contact-card"
-                >
-
-                    <div class="contact-icon">
-                        ☎
-                    </div>
-
-                    <h3>
-                        โทรศัพท์
-                    </h3>
-
-                    <p>
-                        097-979-0035
-                    </p>
-
-                </a>
-
-
-                <!-- EMAIL -->
-
-                <a
-                    href="mailto:vkjjhnight399@gmail.com"
-                    class="contact-card"
-                >
-
-                    <div class="contact-icon">
-                        ✉
-                    </div>
-
-                    <h3>
-                        Email
-                    </h3>
-
-                    <p>
-                        vkjjhnight399@gmail.com
-                    </p>
-
-                </a>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- =========================
-         FOOTER
-    ========================= -->
-
-    <footer class="main-footer">
-
-        © 2026 PADONIK
-
-    </footer>
-
-
-    <!-- =========================
-         BACK TO TOP
-    ========================= -->
 
     <button
-        id="backToTop"
-        onclick="goTop()"
-        aria-label="กลับขึ้นด้านบน"
-    >
-        ↑
+      class="menu-btn"
+      aria-label="เปิดเมนู"
+      onclick="toggleMenu()">
+      ☰
     </button>
 
+  </div>
 
-    <script>
-
-        /* =========================
-           BACK TO TOP
-        ========================= */
-
-        const backToTop =
-            document.getElementById("backToTop");
-
-        window.addEventListener(
-            "scroll",
-            function () {
-
-                if (window.scrollY > 300) {
-
-                    backToTop.style.display =
-                        "block";
-
-                } else {
-
-                    backToTop.style.display =
-                        "none";
-
-                }
-
-            }
-        );
+</header>
 
 
-        function goTop() {
 
-            window.scrollTo({
-
-                top: 0,
-
-                behavior: "smooth"
-
-            });
-
-        }
+<main>
 
 
-        /* =========================
-           SIZE SELECT
-        ========================= */
+<!-- ================= HERO ================= -->
 
-        document
-            .querySelectorAll(".size-options")
-            .forEach(function (group) {
+<section class="hero" id="home">
 
-                const buttons =
-                    group.querySelectorAll(".size");
+  <div class="container hero-grid">
 
-                buttons.forEach(function (button) {
+    <div class="hero-copy">
 
-                    button.addEventListener(
-                        "click",
-                        function () {
+      <div class="mini">
+        HANDMADE DIM SUM • FRESH EVERY DAY
+      </div>
 
-                            buttons.forEach(
-                                function (btn) {
+      <h1>
+        ขนม<span>จีบ</span>
+      </h1>
 
-                                    btn.classList.remove(
-                                        "selected"
-                                    );
+      <div class="hero-tag">
+        คำเล็ก ๆ ที่ความอร่อยไม่เล็ก
+      </div>
 
-                                }
-                            );
+      <p class="hero-desc">
+        ขนมจีบทำสด ไส้แน่น แป้งบาง
+        คัดสรรวัตถุดิบคุณภาพ
+        และพิถีพิถันในทุกคำ
+      </p>
 
-                            button.classList.add(
-                                "selected"
-                            );
+      <div class="hero-actions">
 
-                        }
-                    );
+        <a class="btn btn-primary" href="#menu">
+          🥟 ดูเมนูทั้งหมด
+        </a>
 
-                });
+        <a class="btn btn-light" href="#contact">
+          📞 ติดต่อเรา
+        </a>
 
-            });
+      </div>
 
-
-        /* =========================
-           SCROLL ANIMATION
-        ========================= */
-
-        const observer =
-            new IntersectionObserver(
-                function (entries) {
-
-                    entries.forEach(
-                        function (entry) {
-
-                            if (
-                                entry.isIntersecting
-                            ) {
-
-                                entry.target.classList.add(
-                                    "show"
-                                );
-
-                            }
-
-                        }
-                    );
-
-                },
-                {
-                    threshold: 0.15
-                }
-            );
+    </div>
 
 
-        document
-            .querySelectorAll(
-                ".brand-container, .feature-card, .card"
-            )
-            .forEach(
-                function (element) {
+    <div class="hero-photo">
 
-                    observer.observe(
-                        element
-                    );
+      <img
+        src="KHOM JEEB.PNG "
+        alt="อาหารติ่มซำและขนมจีบ">
 
-                }
-            );
+      <div class="badge">
+        <b>อร่อยระดับ</b>
+        อัลตร้าสมูท
+      </div>
 
-    </script>
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- ================= FEATURES ================= -->
+
+<section class="features">
+
+  <div class="container feature-grid">
+
+    <div class="feature">
+      <div class="feature-icon">🌿</div>
+      <h3>วัตถุดิบคุณภาพ</h3>
+      <p>คัดสรรอย่างดี</p>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">👨‍🍳</div>
+      <h3>ทำสดทุกวัน</h3>
+      <p>หอม อร่อย</p>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">🥟</div>
+      <h3>ไส้แน่น</h3>
+      <p>แป้งบาง</p>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">♡</div>
+      <h3>สะอาด ปลอดภัย</h3>
+      <p>ใส่ใจในทุกขั้นตอน</p>
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- ================= MENU ================= -->
+
+<section class="section menu-section" id="menu">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <div class="eyebrow">
+        OUR MENU
+      </div>
+
+      <h2>
+        เมนูทั้งหมด
+      </h2>
+
+      <p>
+        ขนมจีบของเรามีให้เลือก 2 เมนู
+        ทั้งไส้หมูและไส้กุ้ง
+      </p>
+
+    </div>
+
+
+    <div class="menu-grid">
+
+
+      <article class="card">
+
+        <img
+          src="picc.PNG"
+          alt="ขนมจีบไส้หมู">
+
+        <div class="card-body">
+
+          <h3>
+            🐷 ขนมจีบไส้หมู
+          </h3>
+
+          <p>
+            หมูนุ่ม ปรุงรสกลมกล่อม
+            หอมเครื่องเทศ ไส้แน่นเต็มคำ
+          </p>
+
+          <div class="price">
+
+            <span>
+              67.-
+            </span>
+
+            <span>
+              7 ลูก
+            </span>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <article class="card">
+
+        <img
+          src="piccc.PNG"
+          alt="ขนมจีบไส้กุ้ง">
+
+        <div class="card-body">
+
+          <h3>
+            🦐 ขนมจีบไส้กุ้ง
+          </h3>
+
+          <p>
+            กุ้งเด้งเต็มคำ
+            หอมหวาน สดใหม่ และอร่อยลงตัว
+          </p>
+
+          <div class="price">
+
+            <span>
+              50.-
+            </span>
+
+            <span>
+              6 ลูก
+            </span>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- ================= STORY ================= -->
+
+<section class="section story" id="story">
+
+  <div class="container story-grid">
+
+    <div class="story-img">
+
+      <img
+        src="55.PNG"
+        alt="การทำอาหารอย่างพิถีพิถัน">
+
+    </div>
+
+
+    <div class="story-copy">
+
+      <div class="eyebrow">
+        OUR STORY
+      </div>
+
+      <h2>
+        มีความตั้งใจที่จะ<br>
+        สานต่อร้านขนมจีบต่อจากคุณพ่อโจ
+      </h2>
+
+      <p>
+        เราใส่ใจตั้งแต่การเลือกวัตถุดิบ
+        การปรุงไส้ ไปจนถึงการห่อทีละลูก
+        เพราะเราเชื่อว่าความอร่อยที่ดี
+        เริ่มต้นจากความตั้งใจ
+      </p>
+
+      <div class="quote">
+        “ ขนมจีบที่ดี เริ่มต้นจากร้านเรา ”
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- ================= WHY US ================= -->
+
+<section class="section why" id="why">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <div class="eyebrow">
+        WHY US
+      </div>
+
+      <h2>
+        ทำไมต้อง ขนมจีบ
+      </h2>
+
+      <p style="color:#cdbbb2">
+        ความอร่อยที่เกิดจากรายละเอียดเล็ก ๆ
+      </p>
+
+    </div>
+
+
+    <div class="why-grid">
+
+      <div class="why-card">
+        <div class="why-icon">👨‍🍳</div>
+        <h3>สูตรเฉพาะ</h3>
+        <p>รสชาติเป็นเอกลักษณ์ของเรา</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon">🌿</div>
+        <h3>วัตถุดิบสดใหม่</h3>
+        <p>คัดสรรคุณภาพทุกวัน</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon">✓</div>
+        <h3>สะอาด ปลอดภัย</h3>
+        <p>ใส่ใจมาตรฐานในทุกขั้นตอน</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon">♡</div>
+        <h3>ใส่ใจทุกคำ</h3>
+        <p>ทำด้วยความตั้งใจเพื่อคุณ</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- ================= PACKAGING ================= -->
+
+<section class="section packaging" id="packaging">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <div class="eyebrow">
+        OUR PACKAGING
+      </div>
+
+      <h2>
+        แพ็กเกจจิ้ง
+      </h2>
+
+      <p>
+        ออกแบบบรรจุภัณฑ์ให้เหมาะกับขนมจีบ
+        สวยงาม ใช้งานง่าย และช่วยรักษาคุณภาพของอาหาร
+      </p>
+
+    </div>
+
+
+    <div class="packaging-grid">
+
+
+      <div class="packaging-image">
+
+        <img
+          src="PADONIK.PNG"
+          alt="แพ็กเกจจิ้งขนมจีบ">
+
+      </div>
+
+
+      <div class="packaging-copy">
+
+        <div class="eyebrow">
+          DESIGN CONCEPT
+        </div>
+
+        <h2>
+          เรียบง่าย<br>
+          แต่จดจำได้
+        </h2>
+
+        <p>
+          เราออกแบบแพ็กเกจจิ้งให้มีความเรียบง่าย
+          สะอาด และสื่อถึงความเป็นขนมจีบ
+          พร้อมคำนึงถึงความสะดวกในการถือและรับประทาน
+        </p>
+
+
+        <ul class="packaging-list">
+
+          <li>
+            ดีไซน์เรียบง่ายและดูสะอาด
+          </li>
+
+          <li>
+            เหมาะสำหรับบรรจุขนมจีบ
+          </li>
+
+          <li>
+            ถือและรับประทานได้สะดวก
+          </li>
+
+          <li>
+            มีพื้นที่สำหรับชื่อและโลโก้แบรนด์
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- ================= MEMBERS ================= -->
+
+<section class="section members" id="members">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <div class="eyebrow">
+        OUR TEAM
+      </div>
+
+      <h2>
+        สมาชิกกลุ่ม
+      </h2>
+
+      <p>
+        เบื้องหลังเว็บไซต์และโครงงาน
+        “ขนมจีบ คำเล็ก ๆ ที่ความอร่อยไม่เล็ก”
+      </p>
+
+    </div>
+
+
+    <div class="member-grid">
+
+
+      <div class="member-card">
+
+        <img
+          class="member-photo"
+          src="6767.jpg"
+          alt="รูปสมาชิกคนที่ 1">
+
+        <div class="member-info">
+
+          <h3>
+            นายทัตพงศ์ มูลศักดิ์
+          </h3>
+
+          <p>
+            
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="member-card">
+
+        <img
+          class="member-photo"
+          src="da.JPEG"
+          alt="รูปสมาชิกคนที่ 2">
+
+        <div class="member-info">
+
+          <h3>
+            นายวีรพัฒน์ ระมั่งทอง
+          </h3>
+
+          <p>
+            
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="member-card">
+
+        <img
+          class="member-photo"
+          src="3df69ec8a4885ff8131d815779a4aedb.JPEG"
+          alt="รูปสมาชิกคนที่ 3">
+
+        <div class="member-info">
+
+          <h3>
+            นายอโณทัย น้ำทอง
+          </h3>
+
+          <p>
+            
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="member-card">
+
+        <img
+          class="member-photo"
+          src="af857f4840eab1f4466adec3c076f306.JPEG"
+          alt="รูปสมาชิกคนที่ 4">
+
+        <div class="member-info">
+
+          <h3>
+            นายศุภสิทธิ์ ปุริเส
+          </h3>
+
+          <p>
+            
+          </p>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- ================= CONTACT ================= -->
+
+<section class="section contact" id="contact">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <div class="eyebrow">
+        CONTACT US
+      </div>
+
+      <h2>
+        ติดต่อเรา
+      </h2>
+
+      <p>
+        หากต้องการสอบถามข้อมูลเกี่ยวกับขนมจีบ
+        สามารถติดต่อเราได้ตามช่องทางด้านล่าง
+      </p>
+
+    </div>
+
+
+    <div class="contact-box">
+
+
+      <div class="contact-item">
+
+        <div class="contact-icon">
+          📞
+        </div>
+
+        <h3>
+          โทรศัพท์
+        </h3>
+
+        <p>
+          <a href="tel:0979790035">
+            0979-790-035
+          </a>
+        </p>
+
+      </div>
+
+
+      <div class="contact-item">
+
+        <div class="contact-icon">
+          💬
+        </div>
+
+        <h3>
+          LINE
+        </h3>
+
+        <p>
+          <a href="#">
+            @vkjjh
+          </a>
+        </p>
+
+      </div>
+
+
+      <div class="contact-item">
+
+        <div class="contact-icon">
+          📍
+        </div>
+
+        <h3>
+          สถานที่
+        </h3>
+
+        <p>
+          อำเภอวังม่วง จังหวัดสระบุรี
+        </p>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- ================= FINAL CTA ================= -->
+
+<section class="final-cta">
+
+  <div class="container">
+
+    <h2>
+      “ขนมจีบ”<br>
+      คำเล็ก ๆ ที่ความอร่อยไม่เล็ก
+    </h2>
+
+    <p>
+      ทำสดด้วยความตั้งใจ
+      และใส่ใจในทุกคำ
+    </p>
+
+    <a class="btn btn-light" href="#menu">
+      🥟 ดูเมนูทั้งหมด
+    </a>
+
+  </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+  <div class="container footer-grid">
+
+
+    <div>
+
+      <div class="footer-logo">
+        🥟 ขนมจีบ
+      </div>
+
+      <p>
+        คำเล็ก ๆ ที่ความอร่อยไม่เล็ก<br>
+        ทำสดด้วยความตั้งใจในทุกวัน
+      </p>
+
+      <div class="social">
+
+        <a href="#">f</a>
+        <a href="#">◎</a>
+        <a href="#">♪</a>
+        <a href="#">L</a>
+
+      </div>
+
+    </div>
+
+
+    <div>
+
+      <h4>
+        เมนู
+      </h4>
+
+      <p>
+        <a href="#menu">
+          เมนูทั้งหมด
+        </a>
+      </p>
+
+      <p>
+        <a href="#story">
+          เรื่องราวแบรนด์
+        </a>
+      </p>
+
+      <p>
+        <a href="#why">
+          ทำไมต้องขนมจีบ
+        </a>
+      </p>
+
+      <p>
+        <a href="#packaging">
+          แพ็กเกจจิ้ง
+        </a>
+      </p>
+
+    </div>
+
+
+    <div>
+
+      <h4>
+        ติดต่อเรา
+      </h4>
+
+      <p>
+        ☎ <a href="tel:0979790035">0979-790-035</a>
+      </p>
+
+      <p>
+        💬 LINE: @vkjjh
+      </p>
+
+      <p>
+        📍 อำเภอวังม่วง จังหวัดสระบุรี
+      </p>
+
+      <p>
+        ยังไม่รับจัดส่ง
+      </p>
+
+    </div>
+
+
+    <div>
+
+      <h4>
+        สมาชิกกลุ่ม
+      </h4>
+
+      <p>
+        สมาชิกทั้งหมด 4 คน
+      </p>
+
+      <p>
+        ร่วมกันจัดทำเว็บไซต์
+      </p>
+
+      <p>
+        ขนมจีบ
+      </p>
+
+    </div>
+
+
+  </div>
+
+
+  <div class="container copyright">
+
+    © 2026 ขนมจีบ. All Rights Reserved.
+
+  </div>
+
+</footer>
+
+
+
+<script>
+
+function toggleMenu(){
+
+  document
+    .getElementById('nav')
+    .classList
+    .toggle('open');
+
+}
+
+
+document
+  .querySelectorAll('.nav-links a')
+  .forEach(a=>{
+
+    a.addEventListener('click',()=>{
+
+      document
+        .getElementById('nav')
+        .classList
+        .remove('open');
+
+    });
+
+  });
+
+</script>
+
 
 </body>
-
 </html>
